@@ -1,0 +1,15 @@
+﻿@{
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString();
+    var layout = "_Layout";
+
+    if (controller == "Gestion")
+    {
+        layout = "_LayoutGestion";
+    }
+    else if (controller == "Vistas")
+    {
+        layout = "_LayoutVistas";
+    }
+
+    Layout = layout;
+}

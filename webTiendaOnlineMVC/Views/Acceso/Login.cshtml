@@ -1,0 +1,53 @@
+﻿@model webTiendaOnlineMVC.Models.Login
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+<h1>Iniciar Sesion</h1>
+
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+
+<h1 hidden>@ViewBag.usuario</h1>
+
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form asp-action="Login" class="needs-validation" novalidate>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="CorreoElectronico" class="control-label  visually-hidden"></label>
+                <input asp-for="CorreoElectronico" class="form-control" placeholder="Correo Electrónico" required />
+                <span asp-validation-for="CorreoElectronico" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Contraseña" class="control-label visually-hidden"></label>
+                <input asp-for="Contraseña" class="form-control" placeholder="Contraseña" required />
+                <span asp-validation-for="Contraseña" class="text-danger"></span>
+            </div>
+
+
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
+            </div>
+
+            <a href="@Url.Action("Registrar", "Acceso")" class="btn btn-warning">Registrar Cuenta</a>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

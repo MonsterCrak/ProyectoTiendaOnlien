@@ -1,0 +1,108 @@
+﻿@model webTiendaOnlineMVC.Models.Productos
+
+@{
+    ViewData["Title"] = "MergeProductos";
+    var imagenUrl = Model != null ? Model.ImagenUrl : string.Empty;
+}
+
+<style>
+    #floating-message {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        padding: 10px;
+        background-color: #d4edda;
+        border: 1px solid #c3e6cb;
+        border-radius: 4px;
+        z-index: 9999;
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
+    }
+</style>
+
+
+
+<h1>MergeProductos </h1>
+<h1> </h1>
+
+@if (TempData["Message"] != null)
+{
+    <div id="floating-message" class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+
+
+
+
+
+
+
+
+<h4>Productos</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="MergeProductos" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label"></label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Precio" class="control-label"></label>
+                <input asp-for="Precio" class="form-control" />
+                <span asp-validation-for="Precio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Stock" class="control-label"></label>
+                <input asp-for="Stock" class="form-control" />
+                <span asp-validation-for="Stock" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ImagenUrl" class="control-label"></label>
+                <input id="imagenUrlInput" asp-for="ImagenUrl" class="form-control" />
+                <span asp-validation-for="ImagenUrl" class="text-danger"></span>
+            </div>
+
+            <img id="imagenProducto" src="@imagenUrl" alt="Imagen del producto" class="img-thumbnail smaller-image" />
+
+            <div class="form-group">
+                <input type="submit" value="Grabar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="ListarProductos">Regresar a la lista</a>
+</div>
+
+
+
+<script>
+    // Función para ocultar el mensaje después de 10 segundos
+    setTimeout(function () {
+        var floatingMessage = document.getElementById('floating-message');
+        if (floatingMessage) {
+            floatingMessage.style.opacity = '0';
+            setTimeout(function () {
+                floatingMessage.style.display = 'none';
+            }, 500); // Espera 0.5 segundos después de la transición para ocultar el mensaje
+        }
+    }, 3000);
+</script>
+
+<script>
+    document.getElementById('imagenUrlInput').addEventListener('input', function () {
+        var imageUrl = this.value;
+        document.getElementById('imagenProducto').src = imageUrl;
+    });
+</script>

@@ -1,0 +1,101 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = webTiendaOnlineMVC
+build_property.RootNamespace = webTiendaOnlineMVC
+build_property.ProjectDir = D:\Experiencia Formativa\TiendaOnline\slnTiendaOnlineMVC\webTiendaOnlineMVC\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Experiencia Formativa\TiendaOnline\slnTiendaOnlineMVC\webTiendaOnlineMVC
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/Experiencia Formativa/TiendaOnline/slnTiendaOnlineMVC/webTiendaOnlineMVC/Views/Acceso/Denegado.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNvXERlbmVnYWRvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Experiencia Formativa/TiendaOnline/slnTiendaOnlineMVC/webTiendaOnlineMVC/Views/Acceso/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNvXExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Experiencia Formativa/TiendaOnline/slnTiendaOnlineMVC/webTiendaOnlineMVC/Views/Acceso/Registrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNvXFJlZ2lzdHJhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Experiencia Formativa/TiendaOnline/slnTiendaOnlineMVC/webTiendaOnlineMVC/Views/Gestion/EditarProducto.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VzdGlvblxFZGl0YXJQcm9kdWN0by5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Experiencia Formativa/TiendaOnline/slnTiendaOnlineMVC/webTiendaOnlineMVC/Views/Gestion/EliminarProducto.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VzdGlvblxFbGltaW5hclByb2R1Y3RvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Experiencia Formativa/TiendaOnline/slnTiendaOnlineMVC/webTiendaOnlineMVC/Views/Gestion/ListarProductos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VzdGlvblxMaXN0YXJQcm9kdWN0b3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Experiencia Formativa/TiendaOnline/slnTiendaOnlineMVC/webTiendaOnlineMVC/Views/Gestion/ListarVentas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VzdGlvblxMaXN0YXJWZW50YXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Experiencia Formativa/TiendaOnline/slnTiendaOnlineMVC/webTiendaOnlineMVC/Views/Gestion/MergeProductos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VzdGlvblxNZXJnZVByb2R1Y3Rvcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Experiencia Formativa/TiendaOnline/slnTiendaOnlineMVC/webTiendaOnlineMVC/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Experiencia Formativa/TiendaOnline/slnTiendaOnlineMVC/webTiendaOnlineMVC/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Experiencia Formativa/TiendaOnline/slnTiendaOnlineMVC/webTiendaOnlineMVC/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Experiencia Formativa/TiendaOnline/slnTiendaOnlineMVC/webTiendaOnlineMVC/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Experiencia Formativa/TiendaOnline/slnTiendaOnlineMVC/webTiendaOnlineMVC/Views/Vistas/CarritoCompraDetalle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFzXENhcnJpdG9Db21wcmFEZXRhbGxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Experiencia Formativa/TiendaOnline/slnTiendaOnlineMVC/webTiendaOnlineMVC/Views/Vistas/ListaProductosVender.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFzXExpc3RhUHJvZHVjdG9zVmVuZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Experiencia Formativa/TiendaOnline/slnTiendaOnlineMVC/webTiendaOnlineMVC/Views/Vistas/VenderProducto.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFzXFZlbmRlclByb2R1Y3RvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Experiencia Formativa/TiendaOnline/slnTiendaOnlineMVC/webTiendaOnlineMVC/Views/Vistas/VistaPago.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzdGFzXFZpc3RhUGFnby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Experiencia Formativa/TiendaOnline/slnTiendaOnlineMVC/webTiendaOnlineMVC/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Experiencia Formativa/TiendaOnline/slnTiendaOnlineMVC/webTiendaOnlineMVC/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Experiencia Formativa/TiendaOnline/slnTiendaOnlineMVC/webTiendaOnlineMVC/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-pur97jn7th
+
+[D:/Experiencia Formativa/TiendaOnline/slnTiendaOnlineMVC/webTiendaOnlineMVC/Views/Shared/_LayoutGestion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRHZXN0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-qqfm6a963l
+
+[D:/Experiencia Formativa/TiendaOnline/slnTiendaOnlineMVC/webTiendaOnlineMVC/Views/Shared/_LayoutVistas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRWaXN0YXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-mh2iyvil8w

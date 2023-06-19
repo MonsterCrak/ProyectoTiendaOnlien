@@ -1,0 +1,94 @@
+﻿@{
+    int usuario = @ViewBag.usuario ?? 0;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - webTiendaOnlineMVC</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/webTiendaOnlineMVC.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Gestion" asp-action="ListarProductos">Tienda Online</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Gestion" asp-action="ListarProductos">Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Gestion" asp-action="ListarVentas">Ventas</a>
+                        </li>
+                        <!--Enlace acceso Inicio-->
+                        @*<li class="nav-item usuario">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Acceso" asp-action="Login">Iniciar sesion</a>
+                        </li>*@
+                        <li class="nav-item usuario">
+                            <a class="nav-link text-dark" asp-controller="Acceso" asp-action="Login" data-usuario="0" id="cerrarSesion">Cerrar sesión</a>
+                        </li>
+                        <!--Enlace acceso Fin-->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - webTiendaOnlineMVC - <a asp-area="" asp-controller="Gestion" asp-action="ListarProductos">Inicio</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script>
+        // Obtener el valor de usuario
+        var usuario = @usuario;
+        
+
+        // Ocultar o mostrar elementos según el valor de usuario
+        if (usuario === 0) {
+            $('.usuario').eq(1).hide();
+            $('.usuario').eq(0).show();
+        } else {
+            $('.usuario').eq(1).show();
+            $('.usuario').eq(0).hide();
+        }
+
+        $('#cerrarSesion').click(function () {
+            $.ajax({
+                url: '@Url.Action("CambiarUsuarioSesion", "Acceso")',
+                type: 'POST',
+                success: function (result) {
+                    // Aquí puedes realizar alguna acción después de cambiar el usuario en la sesión
+                    // Por ejemplo, redirigir a otra página
+                    window.location.href = '@Url.Action("ListarProductos", "Gestion")';
+                },
+                error: function (xhr, status, error) {
+                    // Manejo de errores
+                }
+            });
+        });
+        
+
+    </script>
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

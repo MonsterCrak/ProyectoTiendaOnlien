@@ -1,0 +1,69 @@
+﻿@model webTiendaOnlineMVC.Models.Registro
+
+@{
+    ViewData["Title"] = "Registrar";
+}
+
+<h1>Registrar</h1>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+
+
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form asp-action="Registrar" class="needs-validation" novalidate>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="Nombre" class="form-label visually-hidden">Nombre</label>
+                <input asp-for="Nombre" class="form-control" placeholder="Nombre" required>
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Apellido" class="form-label visually-hidden">Apellido</label>
+                <input asp-for="Apellido" class="form-control" placeholder="Apellido" required>
+                <span asp-validation-for="Apellido" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="CorreoElectronico" class="form-label visually-hidden">Correo Electrónico</label>
+                <input asp-for="CorreoElectronico" class="form-control" placeholder="Correo Electrónico" required>
+                <span asp-validation-for="CorreoElectronico" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Contraseña" class="form-label visually-hidden">Contraseña</label>
+                <input asp-for="Contraseña" class="form-control" type="password" placeholder="Contraseña" required>
+                <span asp-validation-for="Contraseña" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ConfirmarContraseña" class="form-label visually-hidden">Confirmar Contraseña</label>
+                <input asp-for="ConfirmarContraseña" class="form-control" type="password" placeholder="Confirmar Contraseña" required>
+                <span asp-validation-for="ConfirmarContraseña" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary w-100">Registrar</button>
+            </div>
+
+            <a href="@Url.Action("Login", "Acceso")" class="btn btn-warning">Iniciar sesión</a>
+        </form>
+    </div>
+   
+
+</div>
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,176 @@
+﻿@model IEnumerable<webTiendaOnlineMVC.Models.DetalleCarrito>
+
+@{
+    ViewData["Title"] = "Carrito de compra";
+    decimal totalPagar = 0;
+}
+
+<style>
+    #floating-message {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        padding: 10px;
+        background-color: #d4edda;
+        border: 1px solid #c3e6cb;
+        border-radius: 4px;
+        z-index: 9999;
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .smaller-image {
+        max-width: 100px;
+        max-height: 100px;
+    }
+
+    .align-middle {
+        vertical-align: middle;
+    }
+
+</style>
+
+
+@if (!string.IsNullOrEmpty(ViewBag.Mensaje))
+{
+    <div class="alert alert-info" role="alert">
+        @ViewBag.Mensaje
+    </div>
+}
+
+
+
+<h1>Carrito de compra</h1>
+
+@if (Model.Any())
+{
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th hidden>
+                        @Html.DisplayNameFor(model => model.CarritoId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Producto.Nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Producto.Descripcion)
+                    </th>
+                    <th>
+                        Precio unitario
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Cantidad)
+                    </th>
+                    <th>
+                        Precio Total Producto
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Producto.ImagenUrl)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td hidden>
+                            @Html.DisplayFor(modelItem => item.CarritoId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Producto.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Producto.Descripcion)
+                        </td>
+                        <td>
+                            S/. @Html.DisplayFor(modelItem => item.Producto.Precio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cantidad)
+                        </td>
+                        <td>
+                            S/. @Html.DisplayFor(modelItem => item.PrecioTotalProducto)
+                            @{
+                                totalPagar += item.PrecioTotalProducto;
+                            }
+                        </td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(item.Producto.ImagenUrl))
+                            {
+                                <img src="@item.Producto.ImagenUrl" alt="Imagen del producto" class="img-thumbnail smaller-image" />
+                            }
+                            else
+                            {
+                                <span>No disponible</span>
+                            }
+                        </td>
+                        <td>
+                            <button class="delete-link btn btn-danger" data-id="@item.ProductoId">Eliminar</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="alert alert-info" role="alert">
+        No hay productos en el carrito. Agrega para poder visualizarlos.
+    </div>
+}
+
+<div class="d-flex justify-content-between">
+    <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("ListaProductosVender", "Vistas")'">
+        Seguir comprando
+    </button>
+    <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("VenderProducto", "Vistas")'">
+        Realizar Pago
+    </button>
+</div>
+
+<br />
+<h3>Total a pagar: S/. @totalPagar</h3>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $('.delete-link').click(function () {
+            var productId = $(this).data('id');
+
+            // Mostrar el mensaje de confirmación
+            var confirmDelete = confirm('¿Estás seguro de que deseas eliminar este producto del carrito?');
+            if (!confirmDelete) {
+                return false; // Cancelar la acción si el usuario cancela la confirmación
+            }
+
+            $.ajax({
+                url: '@Url.Action("EliminarDetalle")',
+                type: 'POST',
+                data: { id: productId },
+                success: function (result) {
+                    if (result.success) {
+                        // Eliminación exitosa
+                        alert('Producto eliminado exitosamente.');
+                        location.reload(); // Recargar la página
+                    } else {
+                        // Error al eliminar el producto
+                        alert('Error al eliminar el producto del carrito: ' + result.message);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    // Error de comunicación con el servidor
+                    alert('Error de comunicación con el servidor: ' + error);
+                }
+            });
+        });
+    });
+</script>

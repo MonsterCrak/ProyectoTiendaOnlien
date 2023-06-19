@@ -1,0 +1,145 @@
+﻿@{
+    ViewData["Title"] = "VenderProducto";
+    int i = 1;
+}
+
+<style>
+    .hidden {
+        display: none;
+    }
+    .img_1, .img_2{
+        width: 100px;
+        height: 100px;
+    }
+</style>
+
+
+
+<div>@ViewBag.Message</div>
+
+
+<h1>Venta</h1>
+
+
+@*<div class="mb-3">
+    <label for="metodoPagoSelect" class="form-label">Método de Pago:</label>
+    <select id="metodoPagoSelect" class="form-select">
+        <option value="">Selecciona método de pago</option>
+        @foreach (var metodoPago in ViewBag.MetodosPago)
+        {
+            <option value="@metodoPago.MetPagoId">@metodoPago.Tipo</option>
+        }
+    </select>
+</div>*@
+
+
+@*<form method="post" action="@Url.Action("accionVender")">
+    <div class="mb-3">
+        <label for="metodoPagoSelect" class="form-label">Método de Pago:</label>
+        <select id="metodoPagoSelect" name="metodoPagoSelect" class="form-select">
+            <option value="">Selecciona método de pago</option>
+            @foreach (var metodoPago in ViewBag.MetodosPago)
+            {
+                <option value="@metodoPago.MetPagoId">@metodoPago.Tipo</option>
+            }
+        </select>
+    </div>
+    <button id="realizarPagoBtn" class="btn btn-primary">Ya realicé el pago</button>
+</form>
+*@
+
+<form method="post" action="@Url.Action("accionVender")">
+    <div class="mb-3">
+        <label for="metodoPagoSelect" class="form-label">Método de Pago:</label>
+        <select id="metodoPagoSelect" name="metodoPagoSelect" class="form-select" required>
+            <option value="">Selecciona método de pago</option>
+            @foreach (var metodoPago in ViewBag.MetodosPago)
+            {
+                <option value="@metodoPago.MetPagoId">@metodoPago.Tipo</option>
+            }
+            <option disabled style="display: none" value="" selected>Selecciona una opción válida</option>
+        </select>
+    </div>
+    <button id="realizarPagoBtn" class="btn btn-primary">Ya realicé el pago</button>
+</form>
+
+
+
+@foreach (var metodoPago in ViewBag.MetodosPago)
+{
+    <div class="row align-items-center">
+        <div class="col-1">
+            <img src="@Url.Content("~/Imagenes/pago_"+@i+".png")" class="img_@i hidden" alt="Imagen no encontrada" style="max-width: 100%; height: auto;" />
+        </div>
+        <div class="col-1">
+            <h1 class="des_@i hidden">@metodoPago.Descripcion</h1>
+        </div>
+    </div>
+    i++;
+}
+
+<br/>
+<br />
+
+<button hidden type="submit" class="btn btn-primary">Ya realice el pago</button>
+
+<script>
+    var selectElement = document.getElementById('metodoPagoSelect');
+
+    selectElement.addEventListener('change', function () {
+        var desElements = document.querySelectorAll('.des_1, .des_2, .img_1, .img_2');
+        desElements.forEach(function (element) {
+            element.classList.add('hidden');
+        });
+
+        if (selectElement.value === "1") {
+            var des1Element = document.querySelector('.des_1');
+            var img1Element = document.querySelector('.img_1');
+            des1Element.classList.remove('hidden');
+            img1Element.classList.remove('hidden');
+        } else if (selectElement.value === "2") {
+            var des2Element = document.querySelector('.des_2');
+            var img2Element = document.querySelector('.img_2');
+            des2Element.classList.remove('hidden');
+            img2Element.classList.remove('hidden');
+        }
+    });
+
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var realizarPagoBtn = document.getElementById("realizarPagoBtn");
+
+        realizarPagoBtn.addEventListener("click", function () {
+            var metodoPagoSelect = document.getElementById("metodoPagoSelect").value;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/Vistas/accionVender", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.success) {
+                        // La venta se realizó correctamente
+                        alert(response.message);
+                    } else {
+                        // Hubo un error en el servidor
+                        alert(response.message);
+                    }
+                } else {
+                    // No se muestra ningún alert aquí
+                }
+            };
+
+            var data = JSON.stringify({ metodoPagoSelect: metodoPagoSelect });
+            xhr.send(data);
+        });
+    });
+
+
+
+
+
+
+</script>

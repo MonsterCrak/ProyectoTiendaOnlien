@@ -1,0 +1,145 @@
+﻿@model IEnumerable<webTiendaOnlineMVC.Models.Productos>
+
+@{
+    ViewData["Title"] = "ListarProductos";
+}
+
+<style>
+    #floating-message {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        padding: 10px;
+        background-color: #d4edda;
+        border: 1px solid #c3e6cb;
+        border-radius: 4px;
+        z-index: 9999;
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .smaller-image {
+        max-width: 100px;
+        max-height: 100px;
+    }
+
+    .align-middle {
+        vertical-align: middle;
+    }
+
+</style>
+
+
+
+<div class="align-items-center">
+    <h1 hidden>@ViewBag.usuario</h1>
+    <h1>Listar Productos</h1>
+</div>
+
+
+@if (TempData["Message"] != null)
+{
+    <div id="floating-message" class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+
+
+
+<p>
+    <a class="btn btn-primary" asp-controller="Gestion" asp-action="MergeProductos">Nuevo Producto</a>
+</p>
+
+<div class="table table-borderless">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductoId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descripcion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Precio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Stock)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImagenUrl)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductoId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Precio)
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Stock)
+                    </td>
+                    <td class="align-middle">
+                        @if (!string.IsNullOrEmpty(item.ImagenUrl))
+                        {
+                            <img src="@item.ImagenUrl" alt="Imagen del producto" class="img-thumbnail smaller-image" />
+                        }
+                        else
+                        {
+                            <span>No disponible</span>
+                        }
+                    </td>
+                    <td class="align-middle">
+                        @Html.ActionLink("Editar", "EditarProducto", new {  id=item.ProductoId }, new { @class = "btn btn-warning btn-sm" })
+                        @Html.ActionLink("Eliminar", "EliminarProducto", new { id = item.ProductoId }, new { @class = "btn btn-danger btn-sm", onclick = "return confirmarEliminacion(" + item.ProductoId + ");" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+<script>
+    // Función para ocultar el mensaje después de 10 segundos
+    setTimeout(function () {
+        var floatingMessage = document.getElementById('floating-message');
+        if (floatingMessage) {
+            floatingMessage.style.opacity = '0';
+            setTimeout(function () {
+                floatingMessage.style.display = 'none';
+            }, 500); // Espera 0.5 segundos después de la transición para ocultar el mensaje
+        }
+    }, 3000);
+
+
+    function confirmarEliminacion(productoId) {
+        if (confirm("¿Estás seguro de que deseas eliminar este producto?")) {
+            setTimeout(function () {
+                // Si el usuario confirma la eliminación, redirige a la acción EliminarProducto
+                window.location.href = "/Gestion/EliminarProducto/" + productoId;
+            }, 100);
+        }
+        return false;
+    }
+
+
+</script>
+
